@@ -5,11 +5,12 @@ from pydantic_settings import BaseSettings, SettingsConfigDict
 class Settings(BaseSettings):
     model_config = SettingsConfigDict(env_file=".env")
 
-    PLANE_X_SIZE: int = 1000
+    PLANE_X_SIZE: int = 500
     PLANE_Y_SIZE: int = 500
-    PLANE_X_SCALE: float = 250
-    PLANE_Y_SCALE: float = 250
-    ROOTS_SEARCH_SCALE: float = 0.001
+    PLANE_X_SCALE: float = 100
+    PLANE_Y_SCALE: float = 20
+    ROOTS_SEARCH_SCALE: float = 0.0064
+
 
 
 settings = Settings()

@@ -10,14 +10,14 @@ from circus import Container
 def run(ioc: IoC = Provide[Container.ioc]):
     with ioc.draw_coordinates() as action:
         action()
-    sin_function = Function(Color.red, lambda x: cos(x))
+    f1 = Function(Color.red, lambda x: x**3-8*x+1)
     with ioc.draw_function() as action:
-        action(sin_function)
-    parabolic_function = Function(Color.red, lambda x: sin(x))
+        action(f1)
+    f2 = Function(Color.blue, lambda x: -12*sin(x)-10*cos(x))
     with ioc.draw_function() as action:
-        action(parabolic_function)
+        action(f2)
     with ioc.draw_area() as action:
-        action([parabolic_function, sin_function])
+        action((f2, f1))
     with ioc.show() as action:
         action()
 

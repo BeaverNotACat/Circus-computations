@@ -20,8 +20,8 @@ class LineSegment:
 class Color(IntEnum):
     white = 0xffffff
     black = 0x000000
-    red = 0xc0392b 
-    blue = 0x2471a3 
+    blue = 0xc0392b 
+    red = 0x2471a3 
     green = 0x2ecc71
 
 

@@ -9,4 +9,4 @@ class CLIOutputGateway(CLIOutput):
         print("┃ FOUND ROOTS ┃")
         print("┗━━━━━━━━━━━━━┛")
         for root in roots:
-            print(f" X = {root.x:,.2f}; Y = {root.y:,.2f}")
+            print(f" X = {root.x:,.4f}; Y = {root.y:,.4f}")

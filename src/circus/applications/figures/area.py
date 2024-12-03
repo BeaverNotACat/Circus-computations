@@ -29,20 +29,24 @@ class DrawArea(FigureInteractor[list[Function]]):
         self.cli = cli_gateway
         self.line_generator_factory = line_generator_factory
         self.search_scale = settings.ROOTS_SEARCH_SCALE
+        # self.search_scale = 1 / Decimal(settings.PLANE_X_SCALE)
         self.plain_size = settings.PLANE_X_SIZE / Decimal(settings.PLANE_X_SCALE)
         self.area_coord_step = 1 / Decimal(settings.PLANE_X_SCALE) / 10
         self.area_hash_step = line_generator_factory(
-            settings.PLANE_X_SIZE / Decimal(settings.PLANE_X_SCALE),
-            -settings.PLANE_X_SIZE / Decimal(settings.PLANE_X_SCALE),
-            1 / Decimal(settings.PLANE_X_SCALE) * 10,
+            settings.PLANE_Y_SIZE / Decimal(settings.PLANE_Y_SCALE),
+            -settings.PLANE_Y_SIZE / Decimal(settings.PLANE_Y_SCALE),
+            1 / Decimal(settings.PLANE_Y_SCALE) * 10,
         )
 
     def _find_roots(self, functions: list[Function]):  # TODO Fix error accumulation
         found_roots = []
         for x in self.x_axis:
+            x = round(x, 3)
             results = list(map(lambda function: function.callable(x), functions))
-            if (y := max(results)) - min(results) <= self.search_scale:
-                found_roots.append(Coordinate(x, y))
+            y_max = round(max(results), 3)
+            y_min = round(min(results), 3)
+            if (y_max - y_min) < self.search_scale:
+                found_roots.append(Coordinate(x, y_max))
         return found_roots
 
     def _integral(self, function: Function, x_start: float, x_end: float):
@@ -68,7 +72,7 @@ class DrawArea(FigureInteractor[list[Function]]):
     def _draw_areas(
         self, f1: Function, f2: Function, roots: list[Coordinate], areas: list[float]
     ) -> None:
-        for coord1, coord2, area in zip(roots[::2], roots[1::2], areas):
+        for coord1, coord2, area in zip(roots[:-1], roots[1:], areas):
             text_coords = Coordinate(
                 (coord1.x + coord2.x) / 2, (coord1.y + coord2.y) / 2
             )
