@@ -10,10 +10,10 @@ from circus import Container
 def run(ioc: IoC = Provide[Container.ioc]):
     with ioc.draw_coordinates() as action:
         action()
-    f1 = Function(Color.red, lambda x: x**3-8*x+1)
+    f1 = Function(Color.red, lambda x: sin(x))
     with ioc.draw_function() as action:
         action(f1)
-    f2 = Function(Color.blue, lambda x: -12*sin(x)-10*cos(x))
+    f2 = Function(Color.blue, lambda x: cos(x))
     with ioc.draw_function() as action:
         action(f2)
     with ioc.draw_area() as action:
