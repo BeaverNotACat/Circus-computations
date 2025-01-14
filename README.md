@@ -2,7 +2,7 @@
 🧮 The most overcomplicated homework for Numerical analysis
 
 ## Preamble
-![image](https://github.com/BeaverNotACat/Circus-computations/blob/main/example.PNG?raw=true)
+![image](https://github.com/BeaverNotACat/Circus-computations/blob/main/assets/example.PNG?raw=true)
 I needed to write a desmos-like graphing calculator and calculate an equalation with it.
 One of the requerements was create project structure with some procedural stuff. But i thout it would be too easy and implemented some type of clean architecture.
 
