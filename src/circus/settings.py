@@ -8,7 +8,7 @@ class Settings(BaseSettings):
     PLANE_X_SIZE: int = 500
     PLANE_Y_SIZE: int = 500
     PLANE_X_SCALE: float = 100
-    PLANE_Y_SCALE: float = 20
+    PLANE_Y_SCALE: float = 10
     ROOTS_SEARCH_SCALE: float = 0.0064
 
 

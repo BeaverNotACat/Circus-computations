@@ -1,11 +1,11 @@
 from typing import Type
 from decimal import Decimal
 
-from dependency_injector.wiring import Provide, inject
+from dependency_injector.wiring import Provide
 
 from circus.settings import SettingsContainer, Settings
 from circus.applications.figure_interactor import FigureInteractor
-from circus.applications.gateway import CoordinatesGenerator, Plane, CLIOutput
+from circus.applications.gateway import CoordinatesGenerator, Plain, CLIOutput
 from circus.domain.models import Color, Coordinate, Function
 
 from circus.adapters.axis_generators import (
@@ -16,7 +16,7 @@ from circus.adapters.axis_generators import (
 class DrawArea(FigureInteractor[list[Function]]):
     def __init__(
         self,
-        plain_gateway: Plane,
+        plain_gateway: Plain,
         x_axis_gateway: CoordinatesGenerator,
         y_axis_gateway: CoordinatesGenerator,
         cli_gateway: CLIOutput,

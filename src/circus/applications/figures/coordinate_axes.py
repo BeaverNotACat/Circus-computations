@@ -4,13 +4,13 @@ from typing import Protocol
 from dependency_injector.wiring import inject, Provide
 
 from circus.applications.figure_interactor import FigureInteractor
-from circus.applications.gateway import CoordinatesGenerator, Plane
+from circus.applications.gateway import CoordinatesGenerator, Plain
 from circus.domain.models import Color, Coordinate
 from circus.settings import Settings, SettingsContainer
 
 
 
-class PlaneGateway(Plane, Protocol): ...
+class PlaneGateway(Plain, Protocol): ...
 class AxisCoordinatesGenerator(CoordinatesGenerator, Protocol): ...
 
 

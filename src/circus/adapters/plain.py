@@ -2,7 +2,7 @@ from dataclasses import dataclass
 
 from circus.domain.models import Color, Coordinate, LineSegment
 from circus.settings import Settings, SettingsContainer
-from circus.applications.gateway import Plane
+from circus.applications.gateway import Plain
 
 from dependency_injector.wiring import Provide, inject
 from PIL import Image, ImageDraw , ImageFont
@@ -14,7 +14,7 @@ class ScreenCoordinates:
     y: int
 
 
-class PlainGateway(Plane):
+class PlainGateway(Plain):
     @inject
     def __init__(self, settings: Settings = Provide[SettingsContainer.settings]) -> None:
         self.settings = settings
@@ -40,7 +40,11 @@ class PlainGateway(Plane):
             pass
     
     def draw_line(self, line: LineSegment, color: Color) -> None:
-        raise NotImplementedError
+        draw = ImageDraw.Draw(self._image)
+        start = self._to_screen_coords(line.start)
+        end = self._to_screen_coords(line.end)
+        draw.line([(start.x, start.y), (end.x, end.y)],fill=color)
+        
 
     def draw_text(self, text: str, coordinate: Coordinate, color: Color) -> None:
         draw = ImageDraw.Draw(self._image)

@@ -3,7 +3,7 @@ from typing import Protocol, Self
 from circus.domain.models import Color, Coordinate, LineSegment, Function
 
 
-class Plane(Protocol):
+class Plain(Protocol):
     def draw_dot(self, coordinate: Coordinate, color: Color) -> None:
         raise NotImplementedError
 
