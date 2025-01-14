@@ -7,7 +7,8 @@ I needed to write a desmos-like graphing calculator and calculate an equalation 
 One of the requerements was create project structure with some procedural stuff. But i thout it would be too easy and implemented some type of clean architecture.
 
 ## How to run
-``
+1. Install `rye`
+2. `rye run python src/circus/app.py`
 
 ## Project structure
 ```
